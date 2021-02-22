@@ -5,7 +5,6 @@
 		<Form @onSubmitForm="onSubmitForm" />
 
 		<ElDialog title="Delete item" :visible.sync="dialogVisible" width="30%">
-			<span>Are u sure u wanna delete this item?</span>
 			<span slot="footer" class="dialog-footer">
 				<ElButton @click="dialogVisible = false">Cancel</ElButton>
 				<ElButton type="primary" @click="onDeleteItem">Confirm</ElButton>
@@ -45,7 +44,9 @@ export default {
 	}),
 	methods: {
 		onDeleteItem(id) {
-			this.$confirm(`Are you sure to close this item ${this.list[id].comment}?`)
+			this.$confirm(
+				`Are you sure to delete this item ${this.list[id].comment}?`
+			)
 				.then(() => {
 					this.$delete(this.list, id);
 				})
